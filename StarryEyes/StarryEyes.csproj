@@ -488,6 +488,13 @@
     <Compile Include="ViewModels\Common\FilterEditor\FilterPredicateViewModelBase.cs" />
     <Compile Include="ViewModels\Common\FilterEditor\FilterSourceViewModel.cs" />
     <Compile Include="ViewModels\WindowParts\Flips\SettingFlips\KeyAssignEditorViewModel.cs" />
+    <Compile Include="Views\WindowParts\Flips\AnalysisFlip.xaml.cs">
+      <DependentUpon>AnalysisFlip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WindowParts\Flips\Analysis\StackedBarGraphConverters.cs" />
+    <Compile Include="ViewModels\WindowParts\Flips\Analysis\StackedBarGraph.cs" />
+    <Compile Include="ViewModels\WindowParts\Flips\Analysis\AnalysisFlipViewModel.cs" />
+    <Compile Include="ViewModels\WindowParts\Flips\Analysis\AnalysisUser.cs" />
     <Compile Include="ViewModels\WindowParts\Inputting\BindHashtagViewModel.cs" />
     <Compile Include="ViewModels\WindowParts\Flips\AccountSelectionFlipViewModel.cs" />
     <Compile Include="ViewModels\WindowParts\BackstageViewModel.cs" />
@@ -645,6 +652,10 @@
     <Compile Include="Views\WindowParts\Flips\SettingFlips\VersionInfo.xaml.cs">
       <DependentUpon>VersionInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\WindowParts\Flips\Analysis\RatioBar.xaml.cs">
+      <DependentUpon>RatioBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WindowParts\Flips\Analysis\AnalysisConverters.cs" />
     <Compile Include="Views\WindowParts\Primitives\TimelineSwapResourcesBehavior.cs" />
     <Compile Include="Views\WindowParts\Primitives\UsersList.xaml.cs">
       <DependentUpon>UsersList.xaml</DependentUpon>
@@ -790,6 +801,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\WindowParts\Flips\AnalysisFlip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WindowParts\Flips\Analysis\RatioBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\WindowParts\Primitives\UsersList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -833,13 +852,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Globalization\AppInitResources.ja.resx" />
+    <EmbeddedResource Include="Globalization\AppInitResources.ja.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Globalization\AppInitResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppInitResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Globalization\BackstageResources.ja.resx" />
+    <EmbeddedResource Include="Globalization\BackstageResources.ja.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Globalization\BackstageResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BackstageResources.Designer.cs</LastGenOutput>

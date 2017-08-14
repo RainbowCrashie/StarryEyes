@@ -21,6 +21,7 @@ using StarryEyes.Settings;
 using StarryEyes.ViewModels.Dialogs;
 using StarryEyes.ViewModels.WindowParts;
 using StarryEyes.ViewModels.WindowParts.Flips;
+using StarryEyes.ViewModels.WindowParts.Flips.Analysis;
 using StarryEyes.ViewModels.WindowParts.Inputting;
 using StarryEyes.Views.Dialogs;
 using StarryEyes.Views.Messaging;
@@ -42,6 +43,8 @@ namespace StarryEyes.ViewModels
         private readonly SettingFlipViewModel _settingFlipViewModel;
 
         private readonly TabConfigurationFlipViewModel _tabConfigurationFlipViewModel;
+
+        private readonly AnalysisFlipViewModel _analysisFlipViewModel;
 
         private readonly SearchFlipViewModel _searchFlipViewModel;
 
@@ -78,6 +81,11 @@ namespace StarryEyes.ViewModels
         public TabConfigurationFlipViewModel TabConfigurationFlipViewModel
         {
             get { return _tabConfigurationFlipViewModel; }
+        }
+
+        public AnalysisFlipViewModel AnalysisFlipViewModel
+        {
+            get { return _analysisFlipViewModel; }
         }
 
         public SearchFlipViewModel SearchFlipViewModel
@@ -129,6 +137,7 @@ namespace StarryEyes.ViewModels
             CompositeDisposable.Add(_globalAccountSelectionFlipViewModel = new AccountSelectionFlipViewModel());
             CompositeDisposable.Add(_settingFlipViewModel = new SettingFlipViewModel(this));
             CompositeDisposable.Add(_tabConfigurationFlipViewModel = new TabConfigurationFlipViewModel());
+            CompositeDisposable.Add(_analysisFlipViewModel = new AnalysisFlipViewModel());
             CompositeDisposable.Add(_searchFlipViewModel = new SearchFlipViewModel());
             CompositeDisposable.Add(Observable
                 .FromEvent<FocusRequest>(
@@ -160,6 +169,7 @@ namespace StarryEyes.ViewModels
                     break;
                 case FocusRequest.Timeline:
                     SearchFlipViewModel.Close();
+                    AnalysisFlipViewModel.Close();
                     var ctab = TabManager.CurrentFocusTab;
                     if (ctab != null)
                     {
@@ -168,6 +178,7 @@ namespace StarryEyes.ViewModels
                     break;
                 case FocusRequest.Input:
                     SearchFlipViewModel.Close();
+                    AnalysisFlipViewModel.Close();
                     this.InputViewModel.OpenInput();
                     this.InputViewModel.FocusToTextBox();
                     break;
@@ -583,6 +594,19 @@ namespace StarryEyes.ViewModels
             await MainWindowModel.ShowSetting().DefaultIfEmpty(Unit.Default);
             MainWindowModel.SetShowMainWindowCommands(true);
             MainWindowModel.SuppressKeyAssigns = false;
+        }
+
+        private Livet.Commands.ViewModelCommand _analizeTabCommand;
+        public Livet.Commands.ViewModelCommand AnalyzeTabCommand
+        {
+            get
+            {
+                return _analizeTabCommand ??
+                       (_analizeTabCommand = new Livet.Commands.ViewModelCommand(() =>
+                       {
+                           AnalysisFlipViewModel.OpenStatisticsFlip(MainAreaViewModel.FocusedColumn.FocusedTab);
+                       }));
+            }
         }
 
         #endregion

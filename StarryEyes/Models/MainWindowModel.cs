@@ -182,6 +182,22 @@ namespace StarryEyes.Models
             return notifier;
         }
 
+        //public static event Action<ISubject<Unit>> StatisticsRequested;
+        //public static IObservable<Unit> ShowStatistics()
+        //{
+        //    var notifier = new Subject<Unit>();
+        //    var handler = StatisticsRequested;
+        //    if (handler != null)
+        //    {
+        //        handler(notifier);
+        //    }
+        //    else
+        //    {
+        //        notifier.OnCompleted();
+        //    }
+        //    return notifier;
+        //}
+
         public static event Action<bool> BackstageTransitionRequested;
         public static void TransitionBackstage(bool open)
         {

@@ -101,7 +101,10 @@
     </i:Interaction.Triggers>
     <controls:MetroWindow.WindowCommands>
         <controls:WindowCommands>
-            <StackPanel VerticalAlignment="Center" Visibility="{Binding SearchFlipViewModel.IsVisible, Converter={StaticResource BooleanToInvisibleConverter}}">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Visibility="{Binding SearchFlipViewModel.IsVisible, Converter={StaticResource BooleanToInvisibleConverter}}">
+                <Button Command="{Binding AnalyzeTabCommand}" 
+                        Content="Analyze TL"
+                        Visibility="{Binding ShowWindowCommands, Converter={StaticResource BooleanToVisibleConverter}}"/>
                 <Button Command="{Binding ShowSettingCommand}"
                         Content="settings"
                         Visibility="{Binding ShowWindowCommands,
@@ -474,5 +477,8 @@
         <flips:SettingFlip Grid.RowSpan="2"
                            Margin="0,-30,0,0"
                            DataContext="{Binding SettingFlipViewModel}" />
+        <flips:AnalysisFlip Grid.RowSpan="2" 
+                              Margin="0,-30,0,0" 
+                              DataContext="{Binding AnalysisFlipViewModel}"/>
     </Grid>
 </controls:MetroWindow>
