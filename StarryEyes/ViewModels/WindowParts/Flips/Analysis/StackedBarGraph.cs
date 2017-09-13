@@ -64,10 +64,12 @@ namespace StarryEyes.ViewModels.WindowParts.Flips.Analysis
 
         public void RegisterStatus(StatusViewModel statusViewModel)
         {
-            var sUser = Users.FirstOrDefault(user => user.UserViewModel.Model.User.Id == statusViewModel.User.Model.User.Id);
+            var userCreated = statusViewModel.IsRetweet ? statusViewModel.Retweeter : statusViewModel.User;
+
+            var sUser = Users.FirstOrDefault(user => user.UserViewModel.Model.User.Id == userCreated.Model.User.Id);
             if (sUser == null)
             {
-                sUser = new AnalysisUser(statusViewModel.User, this);
+                sUser = new AnalysisUser(userCreated, this);
                 Users.Add(sUser);
             }
 

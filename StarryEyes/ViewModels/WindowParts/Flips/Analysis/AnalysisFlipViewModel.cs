@@ -66,7 +66,7 @@ namespace StarryEyes.ViewModels.WindowParts.Flips.Analysis
             MainWindowModel.SetFocusTo(FocusRequest.Timeline);
         }
 
-        public void OpenStatisticsFlip(TabViewModel tl)
+        public void OpenAnalysisFlip(TabViewModel tl)
         {
             Open();
             Analyze(tl);

@@ -604,7 +604,7 @@ namespace StarryEyes.ViewModels
                 return _analizeTabCommand ??
                        (_analizeTabCommand = new Livet.Commands.ViewModelCommand(() =>
                        {
-                           AnalysisFlipViewModel.OpenStatisticsFlip(MainAreaViewModel.FocusedColumn.FocusedTab);
+                           AnalysisFlipViewModel.OpenAnalysisFlip(MainAreaViewModel.FocusedColumn.FocusedTab);
                        }));
             }
         }
